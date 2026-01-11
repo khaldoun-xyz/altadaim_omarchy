@@ -1,6 +1,6 @@
-# Khaldoun install
+# Khaldoun's install files
 
-At [Khaldoun](https://khaldoun.xyz), 
+At [Khaldoun](https://khaldoun.xyz),
 we rely on [Omarchy](https://omarchy.org/).
 
 The `master-install.sh` file is the installer script to complement your
