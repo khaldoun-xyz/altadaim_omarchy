@@ -13,6 +13,7 @@ Clone the repository and run `bash master-install.sh`.
 ## List of features
 
 - Create a ssh key and add it to GitHub
+- Install Cursor IDE
 - Check your disk space with `ncdu`
 - Crop images with `gthumb`
 - Hide YouTube suggestions & comments for more focus

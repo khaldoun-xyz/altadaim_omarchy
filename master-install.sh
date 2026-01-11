@@ -6,3 +6,4 @@
 . ./install-pixi.sh
 . ./install-ncdu.sh
 . ./install-chromeextensions.sh
+. ./install-cursor.sh
