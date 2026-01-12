@@ -1,9 +1,9 @@
 #!/bin/sh
 
-. ./fix-omarchy.sh
-. ./setup-gitauth.sh
-. ./install-gthumb.sh
-. ./install-pixi.sh
-. ./install-ncdu.sh
-. ./install-chromeextensions.sh
-. ./install-cursor.sh
+bash ./fix-omarchy.sh
+bash ./setup-gitauth.sh
+bash ./install-gthumb.sh
+bash ./install-pixi.sh
+bash ./install-ncdu.sh
+bash ./install-chromeextensions.sh
+bash ./install-cursor.sh
