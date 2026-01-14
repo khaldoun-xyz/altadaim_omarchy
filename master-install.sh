@@ -7,3 +7,4 @@ bash ./install-pixi.sh
 bash ./install-ncdu.sh
 bash ./install-chromeextensions.sh
 bash ./install-cursor.sh
+bash ./install-dwarffortress.sh
