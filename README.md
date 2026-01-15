@@ -14,8 +14,10 @@ Clone the repository and run `bash master-install.sh`.
 
 - Create a ssh key and add it to GitHub
 - Install Cursor IDE
-- Check your disk space with `ncdu`
+- Check your disk space with `ncdu` in the terminal
 - Crop images with `gthumb`
 - Hide YouTube suggestions & comments for more focus
 - Install `pixi`
+- Install YouTube Chrome extension
+- Run Dwarf Fortress by typing `dwarffortress` in the terminal
 - Fix a bug in Omarchy that shows no packages to install in the official menu
