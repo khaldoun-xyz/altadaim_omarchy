@@ -18,6 +18,6 @@ Clone the repository and run `bash master-install.sh`.
 - Crop images with `gthumb`
 - Hide YouTube suggestions & comments for more focus
 - Install `pixi`
-- Install YouTube Chrome extension
+- Install Chrome extensions: YouTube, Vimium
 - Run Dwarf Fortress by typing `dwarffortress` in the terminal
 - Fix a bug in Omarchy that shows no packages to install in the official menu
