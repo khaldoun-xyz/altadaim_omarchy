@@ -19,5 +19,6 @@ Clone the repository and run `bash master-install.sh`.
 - Hide YouTube suggestions & comments for more focus
 - Install `pixi`
 - Install Chrome extensions: YouTube, Vimium
+  - To use Vimium, press `f` on a browser page. For shortcuts, press `?`.
 - Run Dwarf Fortress by typing `dwarffortress` in the terminal
 - Fix a bug in Omarchy that shows no packages to install in the official menu
