@@ -4,6 +4,7 @@ bash ./fix-omarchy.sh
 bash ./install-gthumb.sh
 bash ./install-pixi.sh
 bash ./install-ncdu.sh
+bash ./install-lsof.sh
 bash ./install-cursor.sh
 bash ./install-brave.sh
 bash ./install-braveextensions.sh
