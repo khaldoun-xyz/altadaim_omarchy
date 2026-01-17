@@ -8,4 +8,5 @@ bash ./install-ncdu.sh
 bash ./install-cursor.sh
 bash ./install-brave.sh
 bash ./install-braveextensions.sh
+bash ./setup-opencodenvim.sh
 bash ./install-dwarffortress.sh
