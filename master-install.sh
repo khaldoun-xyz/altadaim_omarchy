@@ -8,5 +8,6 @@ bash ./install-lsof.sh
 bash ./install-cursor.sh
 bash ./install-brave.sh
 bash ./install-braveextensions.sh
+bash ./install-lazyextras.sh
 bash ./setup-opencodenvim.sh
 bash ./install-dwarffortress.sh
