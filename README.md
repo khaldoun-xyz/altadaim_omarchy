@@ -8,7 +8,8 @@ with files necessary for your work at Khaldoun.
 
 ## Setup
 
-Clone the repository and run `bash master-install.sh`.
+- Run `gh auth login` in your terminal and follow the instructions.
+- Clone this repository and run `. master-install.sh`.
 
 ## List of features
 
