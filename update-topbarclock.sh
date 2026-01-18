@@ -203,20 +203,14 @@ else
     
     TMP_CONFIG=$(mktemp)
     
-    # Use awk for more robust JSONC manipulation
+    # Use awk for robust JSONC manipulation
     awk -v home="$HOME" '
-    BEGIN { in_clock_block = 0; clock_block_skipped = 0; }
+    BEGIN { in_clock_block = 0; }
     
-    # Replace "clock" in modules-center array
-    /"modules-center": \[.*"clock".*\]/ {
-        # Handle various formats: "clock", "clock", "clock"]
-        if (match($0, /"clock",/)) {
-            sub(/"clock",/, "\"custom/clock\",")
-        } else if (match($0, /"clock"\][[:space:]]*,?/)) {
-            sub(/"clock"\]/, "\"custom/clock\"]")
-        } else if (match($0, /"clock"/)) {
-            sub(/"clock"/, "\"custom/clock\"")
-        }
+    # Replace "clock" with "custom/clock" in modules-center array
+    /"modules-center":/ && /"clock"/ {
+        # Replace first occurrence of "clock" with "custom/clock"
+        sub(/"clock"/, "\"custom/clock\"")
         print $0
         next
     }
@@ -224,7 +218,6 @@ else
     # Detect start of clock config block
     /"clock": {/ {
         in_clock_block = 1
-        clock_block_skipped = 1
         # Replace with custom clock config
         print "  \"custom/clock\": {"
         print "    \"exec\": \"" home "/.config/omarchy/scripts/clock-cycle.sh\","
@@ -239,22 +232,16 @@ else
     }
     
     # Skip lines inside the original clock block
-    in_clock_block && /},/ {
-        in_clock_block = 0
-        next
-    }
-    
-    in_clock_block && /}/ {
-        in_clock_block = 0
-        next
-    }
-    
     in_clock_block {
+        # Check if this line ends the clock block (with optional comma, allowing comments after)
+        if ($0 ~ /^[[:space:]]*},?/) {
+            in_clock_block = 0
+        }
         next
     }
     
     # Print all other lines
-    !in_clock_block {
+    {
         print $0
     }
     ' "$WAYBAR_CONFIG" > "$TMP_CONFIG"
@@ -267,14 +254,22 @@ else
         sed -i 's/"clock",/"custom\/clock",/g' "$TMP_CONFIG"
         sed -i 's/"clock"]/"custom\/clock"]/g' "$TMP_CONFIG"
         
-        # Remove old clock config block
-        sed -i '/"clock": {/,/^  },/d' "$TMP_CONFIG"
-        sed -i '/"clock": {/,/^  }/d' "$TMP_CONFIG"
+        # Remove old clock config block (more flexible pattern for indentation)
+        sed -i '/"clock": {/,/^[[:space:]]*},/d' "$TMP_CONFIG"
+        sed -i '/"clock": {/,/^[[:space:]]*}/d' "$TMP_CONFIG"
         
         # Add custom clock config before the cpu section
         CUSTOM_CLOCK_CONFIG="  \"custom/clock\": {\n    \"exec\": \"$HOME/.config/omarchy/scripts/clock-cycle.sh\",\n    \"exec-if\": \"test -x $HOME/.config/omarchy/scripts/clock-cycle.sh\",\n    \"on-click\": \"$HOME/.config/omarchy/scripts/clock-cycle.sh toggle && pkill -RTMIN+9 waybar\",\n    \"on-click-right\": \"omarchy-launch-floating-terminal-with-presentation omarchy-tz-select\",\n    \"return-type\": \"json\",\n    \"signal\": 9,\n    \"interval\": 60\n  },"
         
-        sed -i '/"cpu": {/i\'"$CUSTOM_CLOCK_CONFIG" "$TMP_CONFIG"
+        # Insert before cpu section, or if not found, before network section
+        if grep -q '"cpu": {' "$TMP_CONFIG"; then
+            sed -i '/"cpu": {/i\'"$CUSTOM_CLOCK_CONFIG" "$TMP_CONFIG"
+        elif grep -q '"network": {' "$TMP_CONFIG"; then
+            sed -i '/"network": {/i\'"$CUSTOM_CLOCK_CONFIG" "$TMP_CONFIG"
+        else
+            # Append before the final closing brace
+            sed -i '$i\'"$CUSTOM_CLOCK_CONFIG" "$TMP_CONFIG"
+        fi
     fi
     
     if grep -q '"custom/clock"' "$TMP_CONFIG"; then
