@@ -38,7 +38,7 @@ If you're on a Framework laptop, do this:
 - Reboot your system. During bootup, press `F2` repeatedly until
   you get into the BIOS setup.
   - Go to the `Security` tab. Find `Secure Boot` and set it to `Disabled`.
-  - Return to the overview and select `Boot from file`
+  - Return to the overview and select `Boot Manager`
     (or a similar wording). - Select the USB drive.
 - For general directions, see the official
   [Omarchy manual](https://learn.omacom.io/2/the-omarchy-manual/50/getting-started).
