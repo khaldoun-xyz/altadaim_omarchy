@@ -16,6 +16,7 @@ your Omarchy setup with files necessary for your work at Khaldoun.
 - Create a ssh key and add it to GitHub
 - Install Cursor IDE
 - Check your disk space with `ncdu` in the terminal
+- Terminal multiplexer with `tmux`
 - Crop images with `gthumb`
 - Install `pixi`
 - Install Brave browser. You need to set it as default yourself.
