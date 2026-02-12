@@ -38,7 +38,7 @@ If you're on a Framework laptop, do this:
 - Plug in the USB stick with the Omarchy installation.
 - Reboot your system. During bootup, press `F2` repeatedly until
   you get into the BIOS setup.
-  - Go to the `Security` tab. Find `Secure Boot` and set it to `Disabled`.
+  - Go to the `Administer Secure Boot` tab. Find `Enable Secure Boot` and set it to `Disabled`.
   - Return to the overview and select `Boot Manager`
     (or a similar wording). - Select the USB drive.
 - For general directions, see the official
