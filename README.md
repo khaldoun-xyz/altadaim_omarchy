@@ -13,12 +13,11 @@ your Omarchy setup with files necessary for your work at Khaldoun.
 
 ## List of features
 
-- Create a ssh key and add it to GitHub
-- Install Cursor IDE
-- Check your disk space with `ncdu` in the terminal
-- Terminal multiplexer with `tmux`
-- Crop images with `gthumb`
-- Install `pixi`
+- Install Cursor IDE.
+- Check your disk space with `ncdu` in the terminal.
+- Terminal multiplexer with `screen`.
+- Crop images with `gthumb`.
+- Install `pixi`.
 - Install Brave browser. You need to set it as default yourself.
 - Install Brave extensions: YouTube blocker, Vimium.
   To use Vimium, press `f` on a browser page. For shortcuts, press `?`.
@@ -28,8 +27,9 @@ your Omarchy setup with files necessary for your work at Khaldoun.
   Toggle OC with `<leader>oo`.
 - Update the clock in the top bar to display the time until the end of
   the current quarter.
-- Run Dwarf Fortress by typing `dwarffortress` in the terminal
-- Fix a bug in Omarchy that shows no packages to install in the official menu
+- Create a `.psqlrc` file that prettifies psql output in your terminal.
+- Run Dwarf Fortress by typing `dwarffortress` in the terminal.
+- Fix a bug in Omarchy that shows no packages to install in the official menu.
 
 ## Installing Omarchy
 
@@ -38,8 +38,10 @@ If you're on a Framework laptop, do this:
 - Plug in the USB stick with the Omarchy installation.
 - Reboot your system. During bootup, press `F2` repeatedly until
   you get into the BIOS setup.
-  - Go to the `Administer Secure Boot` tab. Find `Enable Secure Boot` and set it to `Disabled`.
+  - Go to the `Administer Secure Boot` tab. Find `Enable Secure Boot` and
+    set it to `Disabled`.
   - Return to the overview and select `Boot Manager`
-    (or a similar wording). - Select the USB drive.
+    (or a similar wording).
+  - Select the USB drive to start the install.
 - For general directions, see the official
   [Omarchy manual](https://learn.omacom.io/2/the-omarchy-manual/50/getting-started).
