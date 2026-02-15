@@ -29,6 +29,8 @@ your Omarchy setup with files necessary for your work at Khaldoun.
 - Update the clock in the top bar to display the time until the end of
   the current quarter.
 - Create a `.psqlrc` file that prettifies psql output in your terminal.
+- Add a custom screenshot keybind `SUPER + Shift + s` for external
+  keyboards without PRINT key.
 - Run Dwarf Fortress by typing `dwarffortress` in the terminal.
 - Fix a bug in Omarchy that shows no packages to install in the official menu.
 

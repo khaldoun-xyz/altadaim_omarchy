@@ -13,4 +13,5 @@ bash ./install-lazyextras.sh
 bash ./setup-opencodenvim.sh
 bash ./update-topbarclock.sh
 bash ./create-psqlrc.sh
+bash ./set-screenshotkeybind.sh
 bash ./install-dwarffortress.sh
