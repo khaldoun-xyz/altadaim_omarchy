@@ -31,6 +31,7 @@ If you're on a Framework laptop, do this:
 - Create an ssh key & add it to GitHub.
 - Install Cursor IDE.
 - Check your disk space with `ncdu` in the terminal.
+- List directory structure with `tree` in the terminal.
 - Terminal multiplexer with `screen`.
 - Crop images with `gthumb`.
 - Install `pixi`.
