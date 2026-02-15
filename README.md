@@ -13,6 +13,7 @@ your Omarchy setup with files necessary for your work at Khaldoun.
 
 ## List of features
 
+- Create an ssh key & add it to GitHub.
 - Install Cursor IDE.
 - Check your disk space with `ncdu` in the terminal.
 - Terminal multiplexer with `screen`.
