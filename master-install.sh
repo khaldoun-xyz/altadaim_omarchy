@@ -11,6 +11,7 @@ bash ./install-cursor.sh
 bash ./install-brave.sh
 bash ./install-braveextensions.sh
 bash ./install-lazyextras.sh
+bash ./install-precommit.sh
 bash ./setup-opencodenvim.sh
 bash ./update-topbarclock.sh
 bash ./create-psqlrc.sh
