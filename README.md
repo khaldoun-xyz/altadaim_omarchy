@@ -31,6 +31,7 @@ If you're on a Framework laptop, do this:
 - Create an ssh key & add it to GitHub.
 - Install Cursor IDE.
 - Check your disk space with `ncdu` in the terminal.
+- List directory structure with `tree` in the terminal.
 - Terminal multiplexer with `screen`.
 - Crop images with `gthumb`.
 - Install `pixi`.
@@ -38,6 +39,7 @@ If you're on a Framework laptop, do this:
 - Install Brave extensions: YouTube blocker, Vimium.
   To use Vimium, press `f` on a browser page. For shortcuts, press `?`.
 - Install LazyExtras lang.markdown.
+- Install pre-commit to enable running `pre-commit install` in a repo with a `.pre-commit-config.yml`.
 - Add Lazyvim plugin for OpenCode (OC) integration. In Lazyvim, ask OC
   with `<leader>oa`. Execute a task in OC with `<leader>ox`.
   Toggle OC with `<leader>oo`.
