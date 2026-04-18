@@ -19,6 +19,12 @@ if ! command -v jq &> /dev/null; then
     exit 1
 fi
 
+# Check if npm is installed
+if ! command -v npm &> /dev/null; then
+    echo "❌ npm is not installed. Please install npm first."
+    exit 1
+fi
+
 # Install pi globally via npm
 if ! command -v pi &> /dev/null; then
     echo "📦 pi not found, installing via npm..."
