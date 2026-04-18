@@ -146,7 +146,13 @@ if [ -z "${DEEPSEEK_API_KEY:-}" ]; then
         echo "   Found export in $found_in_file. You may need to restart your shell or run:"
         echo "      source $found_in_file"
     else
-        echo "   Please add 'export DEEPSEEK_API_KEY=\"your-api-key\"' to your ~/.bashrc or equivalent."
+        echo "🔧 Adding DEEPSEEK_API_KEY export to ~/.bashrc ..."
+        if ! grep -q "export DEEPSEEK_API_KEY=" ~/.bashrc; then
+            echo "" >> ~/.bashrc
+            echo "# DeepSeek API key" >> ~/.bashrc
+            echo "export DEEPSEEK_API_KEY='YOUR API KEY'" >> ~/.bashrc
+        fi
+        echo "   Please replace 'YOUR API KEY' with your actual DeepSeek API key."
     fi
 else
     echo "✅ DEEPSEEK_API_KEY is set in environment."
