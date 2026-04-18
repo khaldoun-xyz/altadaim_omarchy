@@ -32,17 +32,15 @@ If you're on a Framework laptop, do this:
 - Install Cursor IDE.
 - Check your disk space with `ncdu` in the terminal.
 - List directory structure with `tree` in the terminal.
-- Terminal multiplexer with `screen`.
+- Terminal multiplexer with `screen` and `tmux`.
+- Upload files to S3 with `s3cmd`.
 - Crop images with `gthumb`.
 - Install `pixi`.
 - Install Brave browser. You need to set it as default yourself.
-- Install Brave extensions: YouTube blocker, Vimium.
+- Install Brave extensions: YouTube blocker, Vimium, Loom screen recorder.
   To use Vimium, press `f` on a browser page. For shortcuts, press `?`.
-- Install LazyExtras lang.markdown.
+- Install LazyExtras `lang.markdown` and `lang.python`.
 - Install pre-commit to enable running `pre-commit install` in a repo with a `.pre-commit-config.yml`.
-- Add Lazyvim plugin for OpenCode (OC) integration. In Lazyvim, ask OC
-  with `<leader>oa`. Execute a task in OC with `<leader>ox`.
-  Toggle OC with `<leader>oo`.
 - Update the clock in the top bar to display the time until the end of
   the current quarter.
 - Create a `.psqlrc` file that prettifies psql output in your terminal.
@@ -50,3 +48,6 @@ If you're on a Framework laptop, do this:
   keyboards without PRINT key.
 - Run Dwarf Fortress by typing `dwarffortress` in the terminal.
 - Fix a bug in Omarchy that shows no packages to install in the official menu.
+- Show keyboard clicks with showmethekey. Launch it from the application
+  menu or via the terminal.
+- Install Pi, a terminal-based coding assistant. For details, see <https://pi.dev>.
