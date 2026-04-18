@@ -48,3 +48,4 @@ If you're on a Framework laptop, do this:
   keyboards without PRINT key.
 - Run Dwarf Fortress by typing `dwarffortress` in the terminal.
 - Fix a bug in Omarchy that shows no packages to install in the official menu.
+- Show keyboard clicks with showmethekey.
