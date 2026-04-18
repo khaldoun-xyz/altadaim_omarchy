@@ -7,6 +7,7 @@ bash ./install-ncdu.sh
 bash ./install-lsof.sh
 bash ./install-tree.sh
 bash ./install-screen.sh
+bash ./install-tmux.sh
 bash ./install-s3cmd.sh
 bash ./install-cursor.sh
 bash ./install-brave.sh
