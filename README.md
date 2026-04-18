@@ -36,7 +36,7 @@ If you're on a Framework laptop, do this:
 - Crop images with `gthumb`.
 - Install `pixi`.
 - Install Brave browser. You need to set it as default yourself.
-- Install Brave extensions: YouTube blocker, Vimium.
+- Install Brave extensions: YouTube blocker, Vimium, Loom screen recorder.
   To use Vimium, press `f` on a browser page. For shortcuts, press `?`.
 - Install LazyExtras lang.markdown.
 - Install pre-commit to enable running `pre-commit install` in a repo with a `.pre-commit-config.yml`.
