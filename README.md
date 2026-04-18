@@ -40,9 +40,6 @@ If you're on a Framework laptop, do this:
   To use Vimium, press `f` on a browser page. For shortcuts, press `?`.
 - Install LazyExtras lang.markdown.
 - Install pre-commit to enable running `pre-commit install` in a repo with a `.pre-commit-config.yml`.
-- Add Lazyvim plugin for OpenCode (OC) integration. In Lazyvim, ask OC
-  with `<leader>oa`. Execute a task in OC with `<leader>ox`.
-  Toggle OC with `<leader>oo`.
 - Update the clock in the top bar to display the time until the end of
   the current quarter.
 - Create a `.psqlrc` file that prettifies psql output in your terminal.
