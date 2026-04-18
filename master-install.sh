@@ -17,5 +17,6 @@ bash ./install-precommit.sh
 bash ./update-topbarclock.sh
 bash ./create-psqlrc.sh
 bash ./set-screenshotkeybind.sh
-bash ./install-dwarffortress.sh
 bash ./install-show_me_the_key.sh
+bash ./install-pi.sh
+bash ./install-dwarffortress.sh
