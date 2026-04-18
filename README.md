@@ -33,12 +33,13 @@ If you're on a Framework laptop, do this:
 - Check your disk space with `ncdu` in the terminal.
 - List directory structure with `tree` in the terminal.
 - Terminal multiplexer with `screen`.
+- Upload files to S3 with `s3cmd`.
 - Crop images with `gthumb`.
 - Install `pixi`.
 - Install Brave browser. You need to set it as default yourself.
 - Install Brave extensions: YouTube blocker, Vimium, Loom screen recorder.
   To use Vimium, press `f` on a browser page. For shortcuts, press `?`.
-- Install LazyExtras lang.markdown.
+- Install LazyExtras `lang.markdown` and `lang.python`.
 - Install pre-commit to enable running `pre-commit install` in a repo with a `.pre-commit-config.yml`.
 - Update the clock in the top bar to display the time until the end of
   the current quarter.
