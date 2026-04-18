@@ -115,7 +115,6 @@ if [ -f "$MODELS_JSON" ]; then
             # Optionally ensure apiKey is DEEPSEEK_API_KEY
             CURRENT_APIKEY=$(jq -r '.providers.deepseek.apiKey // ""' "$MODELS_JSON")
             if [[ "$CURRENT_APIKEY" != "DEEPSEEK_API_KEY" ]]; then
-                echo "⚠️  DeepSeek provider's apiKey is '$CURRENT_APIKEY', updating to DEEPSEEK_API_KEY..."
                 jq '.providers.deepseek.apiKey = "DEEPSEEK_API_KEY"' "$MODELS_JSON" > "$MODELS_JSON.tmp" && mv "$MODELS_JSON.tmp" "$MODELS_JSON"
                 echo "✅ Updated apiKey."
             fi
