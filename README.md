@@ -36,8 +36,10 @@ If you're on a Framework laptop, do this:
 - Upload files to S3 with `s3cmd`.
 - Crop images with `gthumb`.
 - Install `pixi`.
+- Flash ISOs to USB drives with `caligula` in the terminal.
 - Install Brave browser. You need to set it as default yourself.
-- Install Brave extensions: YouTube blocker, Vimium, Loom screen recorder.
+- Install Brave extensions: YouTube blocker, Vimium, Loom screen recorder,
+  BlockSite.
   To use Vimium, press `f` on a browser page. For shortcuts, press `?`.
 - Install LazyExtras `lang.markdown` and `lang.python`.
 - Install pre-commit to enable running `pre-commit install` in a repo with a `.pre-commit-config.yml`.
