@@ -6,6 +6,7 @@ POLICY_FILE="$POLICY_DIR/managed_extensions.json"
 UNHOOK_ID="iniiidjgbmhddeaoblbjoopnmlfnhelf"
 VIMIUM_ID="dbepggeogbaibhgnhhndojpepiihcmeb"
 LOOM_ID="liecbddmkiiihnedobmlmillhodjkdmb"
+BLOCKSITE_ID="eiimnmioipafcokbfikbljfdeojpcgbh"
 
 UPDATE_URL="https://clients2.google.com/service/update2/crx"
 
@@ -27,6 +28,11 @@ cat <<EOF | sudo tee "$POLICY_FILE" > /dev/null
       "toolbar_pin": "force_pinned"
     },
     "$LOOM_ID": {
+      "installation_mode": "force_installed",
+      "update_url": "$UPDATE_URL",
+      "toolbar_pin": "force_pinned"
+    },
+    "$BLOCKSITE_ID": {
       "installation_mode": "force_installed",
       "update_url": "$UPDATE_URL",
       "toolbar_pin": "force_pinned"
