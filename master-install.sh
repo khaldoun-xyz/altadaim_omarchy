@@ -12,6 +12,7 @@ bash ./install-s3cmd.sh
 bash ./install-cursor.sh
 bash ./install-brave.sh
 bash ./install-braveextensions.sh
+bash ./install-caligula.sh
 bash ./install-lazyextras.sh
 bash ./install-precommit.sh
 bash ./update-topbarclock.sh
