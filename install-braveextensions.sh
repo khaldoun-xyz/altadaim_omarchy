@@ -7,7 +7,7 @@ UNHOOK_ID="iniiidjgbmhddeaoblbjoopnmlfnhelf"
 VIMIUM_ID="dbepggeogbaibhgnhhndojpepiihcmeb"
 LOOM_ID="liecbddmkiiihnedobmlmillhodjkdmb"
 BLOCKSITE_ID="eiimnmioipafcokbfikbljfdeojpcgbh"
-SWITCHYOMEGA_ID="padekgcemlokbadohgkifijomclgjgif"
+SWITCHYOMEGA_ID="pfnededegaaopdmhkdmcofjmoldfiped"
 
 UPDATE_URL="https://clients2.google.com/service/update2/crx"
 
