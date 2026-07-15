@@ -20,17 +20,17 @@ echo "Backup created: $BACKUP"
 # Check if SUPER SHIFT, S binding already exists
 if grep -q '^bindd = SUPER SHIFT, S,' "$CONF"; then
     # Replace existing binding
-    sed -i 's/^bindd = SUPER SHIFT, S,.*$/bindd = SUPER SHIFT, S, Screenshot region, exec, omarchy-cmd-screenshot region/' "$CONF"
+    sed -i 's/^bindd = SUPER SHIFT, S,.*$/bindd = SUPER SHIFT, S, Screenshot region, exec, omarchy-capture-screenshot region/' "$CONF"
     echo "Updated existing SUPER SHIFT+S keybind to use region mode."
 else
     # Append new binding to end of file
     echo "" >> "$CONF"
-    echo "bindd = SUPER SHIFT, S, Screenshot region, exec, omarchy-cmd-screenshot region" >> "$CONF"
+    echo "bindd = SUPER SHIFT, S, Screenshot region, exec, omarchy-capture-screenshot region" >> "$CONF"
     echo "Added new SUPER SHIFT+S keybind at end of file."
 fi
 
 # Verify the change
-if grep -q 'bindd = SUPER SHIFT, S, Screenshot region, exec, omarchy-cmd-screenshot region' "$CONF"; then
+if grep -q 'bindd = SUPER SHIFT, S, Screenshot region, exec, omarchy-capture-screenshot region' "$CONF"; then
     echo "Keybind set successfully."
     echo "Restart Hyprland or wait for auto-reload."
 else
