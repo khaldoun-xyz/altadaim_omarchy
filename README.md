@@ -39,7 +39,7 @@ If you're on a Framework laptop, do this:
 - Flash ISOs to USB drives with `caligula` in the terminal.
 - Install Brave browser. You need to set it as default yourself.
 - Install Brave extensions: YouTube blocker, Vimium, Loom screen recorder,
-  BlockSite.
+  BlockSite, Proxy SwitchyOmega 3 (ZeroOmega).
   To use Vimium, press `f` on a browser page. For shortcuts, press `?`.
 - Install LazyExtras `lang.markdown` and `lang.python`.
 - Install pre-commit to enable running `pre-commit install` in a repo with a `.pre-commit-config.yml`.
