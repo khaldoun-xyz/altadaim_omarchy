@@ -48,6 +48,8 @@ If you're on a Framework laptop, do this:
 - Create a `.psqlrc` file that prettifies psql output in your terminal.
 - Add a custom screenshot keybind `SUPER + Shift + S` for external
   keyboards without PRINT key.
+- Show the active keyboard layout on the lock screen password placeholder
+  (e.g. `Enter Password (German)` for QWERTZ).
 - Run Dwarf Fortress by typing `dwarffortress` in the terminal.
 - Fix a bug in Omarchy that shows no packages to install in the official menu.
 - Show keyboard clicks with showmethekey. Launch it from the application
