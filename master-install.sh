@@ -19,6 +19,6 @@ bash ./update-topbarclock.sh
 bash ./create-psqlrc.sh
 bash ./set-screenshotkeybind.sh
 bash ./update-hyprlock-layout.sh
-bash ./install-show_me_the_key.sh
+bash ./install-wshowkeys.sh
 bash ./install-pi.sh
 bash ./install-dwarffortress.sh

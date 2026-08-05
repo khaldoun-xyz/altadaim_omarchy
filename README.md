@@ -52,6 +52,8 @@ If you're on a Framework laptop, do this:
   (e.g. `Enter Password (German)` for QWERTZ).
 - Run Dwarf Fortress by typing `dwarffortress` in the terminal.
 - Fix a bug in Omarchy that shows no packages to install in the official menu.
-- Show keyboard clicks with showmethekey. Launch it from the application
-  menu or via the terminal.
+- Show key presses on screen by entering `showskeys` in the terminal.
+  - Press `SUPER + ^` (the caret key left of `1` on German QWERTZ) to toggle
+    it from anywhere, including while recording. Useful for hiding the overlay
+    before typing a password.
 - Install Pi, a terminal-based coding assistant. For details, see <https://pi.dev>.
