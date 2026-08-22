@@ -4,6 +4,7 @@ yay -S --noconfirm --needed jq
 
 CONFIG_FILE="$HOME/.config/nvim/lazyvim.json"
 EXTRAS=(
+  "lazyvim.plugins.extras.lang.json"
   "lazyvim.plugins.extras.lang.markdown"
   "lazyvim.plugins.extras.lang.python"
 )
