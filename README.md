@@ -44,8 +44,9 @@ If you're on a Framework laptop, do this:
 - Install LazyExtras `lang.markdown` and `lang.python`.
 - Install pre-commit to enable running `pre-commit install` in a repo with a `.pre-commit-config.yml`.
 - Create a `.psqlrc` file that prettifies psql output in your terminal.
-- Add a custom screenshot keybind `SUPER + Shift + S` for external
-  keyboards without PRINT key.
+- Add a custom screenshot keybind `SUPER + Ctrl + S` for external
+  keyboards without PRINT key (replaces the default `SUPER + Ctrl + S`
+  Share menu binding; `SUPER + Shift + S` stays on Google Maps).
 - Run Dwarf Fortress by typing `dwarffortress` in the terminal.
 - Show key presses on screen by entering `showkeys` in the terminal.
   - Press `CTRL + SUPER + ^` (the caret key left of `1` on German QWERTZ) to
