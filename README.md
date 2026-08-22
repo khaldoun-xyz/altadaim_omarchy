@@ -41,7 +41,10 @@ If you're on a Framework laptop, do this:
 - Install Brave extensions: YouTube blocker, Vimium, Loom screen recorder,
   BlockSite, Proxy SwitchyOmega 3 (ZeroOmega).
   To use Vimium, press `f` on a browser page. For shortcuts, press `?`.
-- Install LazyExtras `lang.markdown` and `lang.python`.
+- Install LazyExtras `lang.json`, `lang.markdown`, and `lang.python`.
+  With `lang.json`, open a `.json` file in Neovim and press `Space c f`
+  (or run `:Format`) to beautify it; selecting lines first formats only
+  the selection.
 - Install pre-commit to enable running `pre-commit install` in a repo with a `.pre-commit-config.yml`.
 - Create a `.psqlrc` file that prettifies psql output in your terminal.
 - Add a custom screenshot keybind `SUPER + Ctrl + S` for external
