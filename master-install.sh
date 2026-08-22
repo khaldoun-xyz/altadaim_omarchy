@@ -1,6 +1,5 @@
 #!/bin/sh
 
-bash ./fix-omarchy.sh
 bash ./install-gthumb.sh
 bash ./install-pixi.sh
 bash ./install-ncdu.sh
@@ -17,7 +16,5 @@ bash ./install-lazyextras.sh
 bash ./install-precommit.sh
 bash ./create-psqlrc.sh
 bash ./set-screenshotkeybind.sh
-bash ./update-hyprlock-layout.sh
 bash ./install-wshowkeys.sh
-bash ./install-pi.sh
 bash ./install-dwarffortress.sh
