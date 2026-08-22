@@ -1,40 +1,55 @@
 #!/bin/bash
+set -euo pipefail
 
 # Set custom screenshot keybind to use region mode (mark box with mouse)
-# Updates ~/.config/hypr/bindings.conf
+#
+# Omarchy Quattro (4.x) moved Hyprland config to Lua: user overrides live in
+# ~/.config/hypr/bindings.lua (sourced by hyprland.lua). In Quattro,
+# SUPER+SHIFT+S is a default "Google Maps" webapp binding, so we unbind it
+# first. Legacy Omarchy (<4) used ~/.config/hypr/bindings.conf instead.
 
-set -e
+HYPR_BINDINGS_LUA="$HOME/.config/hypr/bindings.lua"
+HYPR_BINDINGS_CONF="$HOME/.config/hypr/bindings.conf"
+changed=0
 
-CONF="$HOME/.config/hypr/bindings.conf"
-BACKUP="${CONF}.bak.$(date +%s)"
+if [ -f "$HYPR_BINDINGS_LUA" ]; then
+    if ! grep -q 'Screenshot region on SUPER+SHIFT+S' "$HYPR_BINDINGS_LUA"; then
+        cp "$HYPR_BINDINGS_LUA" "$HYPR_BINDINGS_LUA.bak.$(date +%s)"
+        cat >> "$HYPR_BINDINGS_LUA" <<'EOF'
 
-if [[ ! -f "$CONF" ]]; then
-    echo "Error: $CONF does not exist" >&2
-    exit 1
+-- Screenshot region on SUPER+SHIFT+S (no PRINT key on this keyboard)
+hl.unbind("SUPER + SHIFT + S")
+o.bind("SUPER + SHIFT + S", "Screenshot region", "omarchy-capture-screenshot region")
+EOF
+        echo "Added SUPER+SHIFT+S region-screenshot keybind to $HYPR_BINDINGS_LUA"
+        changed=1
+    else
+        echo "SUPER+SHIFT+S screenshot keybind already present in $HYPR_BINDINGS_LUA."
+    fi
+elif [ -f "$HYPR_BINDINGS_CONF" ]; then
+    # Legacy Omarchy (<4): bindings.conf
+    if grep -q '^bindd = SUPER SHIFT, S,' "$HYPR_BINDINGS_CONF"; then
+        cp "$HYPR_BINDINGS_CONF" "$HYPR_BINDINGS_CONF.bak.$(date +%s)"
+        sed -i 's/^bindd = SUPER SHIFT, S,.*$/bindd = SUPER SHIFT, S, Screenshot region, exec, omarchy-capture-screenshot region/' "$HYPR_BINDINGS_CONF"
+        echo "Updated existing SUPER SHIFT+S keybind to use region mode in $HYPR_BINDINGS_CONF"
+        changed=1
+    else
+        cp "$HYPR_BINDINGS_CONF" "$HYPR_BINDINGS_CONF.bak.$(date +%s)"
+        echo "" >> "$HYPR_BINDINGS_CONF"
+        echo "bindd = SUPER SHIFT, S, Screenshot region, exec, omarchy-capture-screenshot region" >> "$HYPR_BINDINGS_CONF"
+        echo "Added SUPER SHIFT+S region-screenshot keybind to $HYPR_BINDINGS_CONF"
+        changed=1
+    fi
+else
+    echo "⚠️  Neither $HYPR_BINDINGS_LUA nor $HYPR_BINDINGS_CONF found."
+    echo "   Add this to your Hyprland Lua config manually:"
+    echo "   o.bind(\"SUPER + SHIFT + S\", \"Screenshot region\", \"omarchy-capture-screenshot region\")"
 fi
 
-# Create backup
-cp "$CONF" "$BACKUP"
-echo "Backup created: $BACKUP"
-
-# Check if SUPER SHIFT, S binding already exists
-if grep -q '^bindd = SUPER SHIFT, S,' "$CONF"; then
-    # Replace existing binding
-    sed -i 's/^bindd = SUPER SHIFT, S,.*$/bindd = SUPER SHIFT, S, Screenshot region, exec, omarchy-capture-screenshot region/' "$CONF"
-    echo "Updated existing SUPER SHIFT+S keybind to use region mode."
-else
-    # Append new binding to end of file
-    echo "" >> "$CONF"
-    echo "bindd = SUPER SHIFT, S, Screenshot region, exec, omarchy-capture-screenshot region" >> "$CONF"
-    echo "Added new SUPER SHIFT+S keybind at end of file."
-fi
-
-# Verify the change
-if grep -q 'bindd = SUPER SHIFT, S, Screenshot region, exec, omarchy-capture-screenshot region' "$CONF"; then
-    echo "Keybind set successfully."
-    echo "Restart Hyprland or wait for auto-reload."
-else
-    echo "Error: Failed to set keybind. Restoring backup."
-    cp "$BACKUP" "$CONF"
-    exit 1
+if [ "$changed" -eq 1 ]; then
+    hyprctl reload
+    if hyprctl configerrors | grep -q .; then
+        echo "⚠️  Hyprland config errors:" >&2
+        hyprctl configerrors >&2
+    fi
 fi
