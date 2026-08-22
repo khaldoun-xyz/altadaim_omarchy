@@ -51,7 +51,7 @@ If you're on a Framework laptop, do this:
 - Run Dwarf Fortress by typing `dwarffortress` in the terminal.
 - Fix a bug in Omarchy that shows no packages to install in the official menu.
 - Show key presses on screen by entering `showkeys` in the terminal.
-  - Press `SUPER + ^` (the caret key left of `1` on German QWERTZ) to toggle
-    it from anywhere, including while recording. Useful for hiding the overlay
-    before typing a password.
+  - Press `CTRL + SUPER + ^` (the caret key left of `1` on German QWERTZ) to
+    toggle it from anywhere, including while recording. Useful for hiding the
+    overlay before typing a password.
 - Install Pi, a terminal-based coding assistant. For details, see <https://pi.dev>.

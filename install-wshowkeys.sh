@@ -36,12 +36,15 @@ SHOWKEYS_BIN="$HOME/.local/bin/showkeys"
 if [ ! -f "$SHOWKEYS_BIN" ]; then
     cat > "$SHOWKEYS_BIN" <<'EOF'
 #!/bin/bash
-# Toggle the wshowkeys key-press overlay.
-# Modifier keys (-M), mouse buttons (-U), scroll direction (-S), anchored bottom.
+# Toggle the wshowkeys key-press overlay (anchored bottom).
+# Note: -M/-U/-S enable the persistent modifier/mouse/scroll bar, which renders
+# broken (giant, mid-screen) on scale-2 Hyprland 0.56, so it's intentionally
+# omitted. The transient key chips above the bottom bar still show combos
+# (e.g. "Shift+A").
 if pgrep -x wshowkeys >/dev/null 2>&1; then
     pkill -x wshowkeys
 else
-    exec wshowkeys -a bottom -M -U -S
+    exec wshowkeys -a bottom
 fi
 EOF
     chmod +x "$SHOWKEYS_BIN"
@@ -50,9 +53,9 @@ else
     echo "$SHOWKEYS_BIN already exists."
 fi
 
-# --- Bind SUPER+^ to toggle the overlay ---
+# --- Bind CTRL+SUPER+^ to toggle the overlay ---
 # SUPER+K was already taken by omarchy's "Show key bindings" (sourced default),
-# so the toggle lives on SUPER+^ (dead_circumflex on the German QWERTZ layout).
+# so the toggle lives on CTRL+SUPER+^ (dead_circumflex on the German QWERTZ layout).
 
 # Omarchy Quattro (4.x) moved Hyprland configuration to Lua files. User
 # overrides live in ~/.config/hypr/bindings.lua (sourced by hyprland.lua);
@@ -67,31 +70,31 @@ if [ -f "$HYPR_BINDINGS_LUA" ]; then
         cat >> "$HYPR_BINDINGS_LUA" <<'EOF'
 
 -- Show keys on screen (wshowkeys toggle)
-o.bind("SUPER + dead_circumflex", "Show keys", "showkeys")
+o.bind("SUPER + CTRL + dead_circumflex", "Show keys", "showkeys")
 EOF
-        echo "Added SUPER+^ hotkey to $HYPR_BINDINGS_LUA"
+        echo "Added CTRL+SUPER+^ hotkey to $HYPR_BINDINGS_LUA"
         changed=1
     else
-        echo "SUPER+^ hotkey already present in $HYPR_BINDINGS_LUA."
+        echo "CTRL+SUPER+^ hotkey already present in $HYPR_BINDINGS_LUA."
     fi
 elif [ -f "$HYPR_BINDINGS_CONF" ]; then
     # Legacy Omarchy (<4): bindings.conf
     if grep -q 'exec, showkeys' "$HYPR_BINDINGS_CONF"; then
-        echo "SUPER+^ hotkey already present in $HYPR_BINDINGS_CONF."
+        echo "CTRL+SUPER+^ hotkey already present in $HYPR_BINDINGS_CONF."
     else
         cp "$HYPR_BINDINGS_CONF" "$HYPR_BINDINGS_CONF.bak.$(date +%s)"
         cat >> "$HYPR_BINDINGS_CONF" <<'EOF'
 
 # Show keys on screen (wshowkeys toggle)
-bindd = SUPER, dead_circumflex, Show keys, exec, showkeys
+bindd = SUPER CTRL, dead_circumflex, Show keys, exec, showkeys
 EOF
-        echo "Added SUPER+^ hotkey to $HYPR_BINDINGS_CONF"
+        echo "Added CTRL+SUPER+^ hotkey to $HYPR_BINDINGS_CONF"
         changed=1
     fi
 else
     echo "⚠️  Neither $HYPR_BINDINGS_LUA nor $HYPR_BINDINGS_CONF found."
     echo "   Add this line to your Hyprland Lua config manually:"
-    echo "   o.bind(\"SUPER + dead_circumflex\", \"Show keys\", \"showkeys\")"
+    echo "   o.bind(\"SUPER + CTRL + dead_circumflex\", \"Show keys\", \"showkeys\")"
 fi
 
 if [ "$changed" -eq 1 ]; then
@@ -102,4 +105,4 @@ if [ "$changed" -eq 1 ]; then
     fi
 fi
 
-echo "✨ Wshowkeys installed. Run 'showkeys' or press SUPER+^ to toggle the key display."
+echo "✨ Wshowkeys installed. Run 'showkeys' or press CTRL+SUPER+^ to toggle the key display."
