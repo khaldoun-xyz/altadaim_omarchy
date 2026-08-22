@@ -1,6 +1,6 @@
 #!/bin/bash
 
-yay -S --noconfirm --needed jq
+yay -S --noconfirm --needed jq yarn
 
 CONFIG_FILE="$HOME/.config/nvim/lazyvim.json"
 EXTRAS=(
