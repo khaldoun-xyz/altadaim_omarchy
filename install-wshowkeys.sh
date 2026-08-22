@@ -36,12 +36,15 @@ SHOWKEYS_BIN="$HOME/.local/bin/showkeys"
 if [ ! -f "$SHOWKEYS_BIN" ]; then
     cat > "$SHOWKEYS_BIN" <<'EOF'
 #!/bin/bash
-# Toggle the wshowkeys key-press overlay.
-# Modifier keys (-M), mouse buttons (-U), scroll direction (-S), anchored bottom.
+# Toggle the wshowkeys key-press overlay (anchored bottom).
+# Note: -M/-U/-S enable the persistent modifier/mouse/scroll bar, which renders
+# broken (giant, mid-screen) on scale-2 Hyprland 0.56, so it's intentionally
+# omitted. The transient key chips above the bottom bar still show combos
+# (e.g. "Shift+A").
 if pgrep -x wshowkeys >/dev/null 2>&1; then
     pkill -x wshowkeys
 else
-    exec wshowkeys -a bottom -M -U -S
+    exec wshowkeys -a bottom
 fi
 EOF
     chmod +x "$SHOWKEYS_BIN"
@@ -50,37 +53,56 @@ else
     echo "$SHOWKEYS_BIN already exists."
 fi
 
-# --- Bind SUPER+^ to toggle the overlay ---
+# --- Bind CTRL+SUPER+^ to toggle the overlay ---
 # SUPER+K was already taken by omarchy's "Show key bindings" (sourced default),
-# so the toggle lives on SUPER+^ (dead_circumflex on the German QWERTZ layout).
+# so the toggle lives on CTRL+SUPER+^ (dead_circumflex on the German QWERTZ layout).
 
-HYPR_BINDINGS="$HOME/.config/hypr/bindings.conf"
-if [ -f "$HYPR_BINDINGS" ]; then
-    changed=0
-    # Migrate away from earlier binding forms if present
-    if grep -qE 'SUPER, K, Show keys|, dead_circumflex, Show keys' "$HYPR_BINDINGS"; then
-        cp "$HYPR_BINDINGS" "$HYPR_BINDINGS.bak.$(date +%s)"
-        sed -i -E '/SUPER, K, Show keys|, dead_circumflex, Show keys/d' "$HYPR_BINDINGS"
-        echo "Removed old showkeys binding(s)."
+# Omarchy Quattro (4.x) moved Hyprland configuration to Lua files. User
+# overrides live in ~/.config/hypr/bindings.lua (sourced by hyprland.lua);
+# ~/.config/hypr/bindings.conf is only used by legacy Omarchy (<4).
+HYPR_BINDINGS_LUA="$HOME/.config/hypr/bindings.lua"
+HYPR_BINDINGS_CONF="$HOME/.config/hypr/bindings.conf"
+changed=0
+
+if [ -f "$HYPR_BINDINGS_LUA" ]; then
+    if ! grep -q 'Show keys on screen (wshowkeys toggle)' "$HYPR_BINDINGS_LUA"; then
+        cp "$HYPR_BINDINGS_LUA" "$HYPR_BINDINGS_LUA.bak.$(date +%s)"
+        cat >> "$HYPR_BINDINGS_LUA" <<'EOF'
+
+-- Show keys on screen (wshowkeys toggle)
+o.bind("SUPER + CTRL + dead_circumflex", "Show keys", "showkeys")
+EOF
+        echo "Added CTRL+SUPER+^ hotkey to $HYPR_BINDINGS_LUA"
         changed=1
+    else
+        echo "CTRL+SUPER+^ hotkey already present in $HYPR_BINDINGS_LUA."
     fi
-    if ! grep -q 'exec, showkeys' "$HYPR_BINDINGS"; then
-        [ "$changed" -eq 0 ] && cp "$HYPR_BINDINGS" "$HYPR_BINDINGS.bak.$(date +%s)"
-        cat >> "$HYPR_BINDINGS" <<'EOF'
+elif [ -f "$HYPR_BINDINGS_CONF" ]; then
+    # Legacy Omarchy (<4): bindings.conf
+    if grep -q 'exec, showkeys' "$HYPR_BINDINGS_CONF"; then
+        echo "CTRL+SUPER+^ hotkey already present in $HYPR_BINDINGS_CONF."
+    else
+        cp "$HYPR_BINDINGS_CONF" "$HYPR_BINDINGS_CONF.bak.$(date +%s)"
+        cat >> "$HYPR_BINDINGS_CONF" <<'EOF'
 
 # Show keys on screen (wshowkeys toggle)
-bindd = SUPER, dead_circumflex, Show keys, exec, showkeys
+bindd = SUPER CTRL, dead_circumflex, Show keys, exec, showkeys
 EOF
-        echo "Added SUPER+^ hotkey to $HYPR_BINDINGS"
+        echo "Added CTRL+SUPER+^ hotkey to $HYPR_BINDINGS_CONF"
         changed=1
     fi
-    if [ "$changed" -eq 1 ]; then
-        hyprctl reload
-        if hyprctl configerrors | grep -q .; then
-            echo "⚠️  Hyprland config errors after adding the binding:" >&2
-            hyprctl configerrors >&2
-        fi
+else
+    echo "⚠️  Neither $HYPR_BINDINGS_LUA nor $HYPR_BINDINGS_CONF found."
+    echo "   Add this line to your Hyprland Lua config manually:"
+    echo "   o.bind(\"SUPER + CTRL + dead_circumflex\", \"Show keys\", \"showkeys\")"
+fi
+
+if [ "$changed" -eq 1 ]; then
+    hyprctl reload
+    if hyprctl configerrors | grep -q .; then
+        echo "⚠️  Hyprland config errors after adding the binding:" >&2
+        hyprctl configerrors >&2
     fi
 fi
 
-echo "✨ Wshowkeys installed. Run 'showkeys' or press SUPER+^ to toggle the key display."
+echo "✨ Wshowkeys installed. Run 'showkeys' or press CTRL+SUPER+^ to toggle the key display."
