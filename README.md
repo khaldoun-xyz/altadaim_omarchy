@@ -32,6 +32,7 @@ If you're on a Framework laptop, do this:
 - Install Cursor IDE.
 - Check your disk space with `ncdu` in the terminal.
 - List directory structure with `tree` in the terminal.
+- Edit files in the terminal with `nano`.
 - Terminal multiplexer with `screen` and `tmux`.
 - Upload files to S3 with `s3cmd`.
 - Crop images with `gthumb`.
