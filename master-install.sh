@@ -6,6 +6,7 @@ bash ./install-ncdu.sh
 bash ./install-lsof.sh
 bash ./install-tree.sh
 bash ./install-nano.sh
+bash ./install-vim.sh
 bash ./install-screen.sh
 bash ./install-tmux.sh
 bash ./install-s3cmd.sh
