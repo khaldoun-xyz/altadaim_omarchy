@@ -16,6 +16,7 @@ bash ./install-braveextensions.sh
 bash ./install-caligula.sh
 bash ./install-lazyextras.sh
 bash ./install-precommit.sh
+bash ./install-crontab.sh
 bash ./create-psqlrc.sh
 bash ./set-screenshotkeybind.sh
 bash ./install-wshowkeys.sh

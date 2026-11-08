@@ -48,6 +48,7 @@ If you're on a Framework laptop, do this:
   (or run `:Format`) to beautify it; selecting lines first formats only
   the selection.
 - Install pre-commit to enable running `pre-commit install` in a repo with a `.pre-commit-config.yml`.
+- Install cronie so you can schedule jobs with `crontab -l` and `crontab -e`.
 - Create a `.psqlrc` file that prettifies psql output in your terminal.
 - Add a custom screenshot keybind `SUPER + Ctrl + S` for external
   keyboards without PRINT key (replaces the default `SUPER + Ctrl + S`
